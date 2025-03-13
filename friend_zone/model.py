@@ -3,7 +3,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report, accuracy_score
 
 
-def train_model(X_train, y_train):
+def train_model(X_train, y_train, feature_names):
     clf = RandomForestClassifier(random_state=42)
 
     param_grid = {
@@ -20,6 +20,8 @@ def train_model(X_train, y_train):
     best_clf = grid_search.best_estimator_
     best_clf.fit(X_train, y_train)
 
+    print("Modelo entrenado exitosamente con los mejores parámetros encontrados.")
+    best_clf.feature_names_in_ = feature_names
     return best_clf
 
 

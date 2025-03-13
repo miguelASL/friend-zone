@@ -1,4 +1,4 @@
-# Análisis Predictivo: ¿Estás en la "Friend Zone"?
+# 🔍 Análisis Predictivo: ¿Estás en la "Friend Zone"?
 
 > Este proyecto realiza un análisis predictivo usando un conjunto de datos ficticio para determinar si alguien está en la "friend zone" basándose en diferentes características.
 
@@ -28,27 +28,26 @@ El proyecto fue construido usando las siguientes herramientas y bibliotecas:
 -   **pandas** - Biblioteca para el análisis de datos.
 -   **matplotlib** - Biblioteca para visualizaciones.
 -   **scikit-learn** - Biblioteca para modelado y aprendizaje automático.
--   **tkinter** - Biblioteca para la creación de interfaces gráficas.
+-   **Django** - Framework para el desarrollo web.
 
 ## 🚀 Cómo ejecutar el proyecto
 
 Sigue estos pasos para ejecutar el proyecto localmente:
 
-1. Asegúrate de tener instaladas las bibliotecas necesarias (`pandas`, `numpy`, `scikit-learn`, `matplotlib`, `tkinter`).
+1. Asegúrate de tener instaladas las bibliotecas necesarias (`pandas`, `numpy`, `scikit-learn`, `matplotlib`).
 2. Clona el repositorio a tu máquina local.
 3. Abre tu terminal y navega al directorio del proyecto.
-4. Ejecuta el archivo principal con el siguiente comando:
+4. Ejecuta los siguientes comandos para aplicar las migraciones y ejecutar el servidor:
     ```bash
-    python main.py
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py runserver
     ```
+5. Abre tu navegador y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.
 
 ## 📊 Resultados
 
 Al ejecutar el programa, obtendrás un reporte de clasificación que detalla el rendimiento del modelo. Además, se generará una visualización que muestra la importancia de cada característica en la predicción.
-
-## 🖥️ Interfaz Gráfica
-
-El programa incluye una interfaz gráfica creada con `tkinter`. Al ejecutar el programa, se abrirá una ventana donde podrás ingresar los valores de las características y hacer clic en un botón para ejecutar el análisis. El resultado se mostrará en un mensaje emergente.
 
 ## 📦 Librerías necesarias
 
@@ -58,10 +57,10 @@ Asegúrate de tener instaladas las siguientes librerías para ejecutar el proyec
 -   **numpy**
 -   **scikit-learn**
 -   **matplotlib**
--   **tkinter**
+-   **Django**
 
 Puedes instalar todas las librerías necesarias ejecutando el siguiente comando:
 
 ```bash
-pip install -r requierements.txt
+pip install -r requirements.txt
 ```

@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 
 
-def plot_feature_importances(model, features):
+def plot_feature_importances(model, features, output_path='feature_importances.png'):
     importances = model.feature_importances_
-    colors = plt.cm.viridis(importances)
+    colors = plt.cm.plasma(importances)
 
     plt.figure(figsize=(12, 8))
     bars = plt.barh(features, importances, color=colors, edgecolor='black')
@@ -16,8 +16,8 @@ def plot_feature_importances(model, features):
 
     max_idx = importances.argmax()
     plt.annotate(f'Máxima importancia: {importances[max_idx]:.2f}',
-                 xy=(importances[max_idx], features[max_idx]),
-                 xytext=(importances[max_idx]-0.2, max_idx+0.5),
+                 xy=(importances[max_idx], max_idx),
+                 xytext=(importances[max_idx] + 0.05, max_idx),
                  arrowprops=dict(facecolor='red', arrowstyle='->'),
                  fontsize=12,
                  color='red',
@@ -25,4 +25,5 @@ def plot_feature_importances(model, features):
 
     plt.gca().invert_yaxis()
     plt.tight_layout()
-    plt.show()
+    plt.savefig(output_path)
+    plt.close()

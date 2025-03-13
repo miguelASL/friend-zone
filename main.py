@@ -7,6 +7,7 @@ from friend_zone.data import load_data
 from friend_zone.preprocessing import preprocess_data
 from friend_zone.model import train_model, evaluate_model
 from friend_zone.visualization import plot_feature_importances
+import matplotlib.pyplot as plt
 
 
 def calculate_probability(model, sample):
@@ -20,34 +21,40 @@ def run_analysis(user_data, frame):
     df = load_data()
 
     # Preprocesar datos
-    X_train, X_test, y_train, y_test = preprocess_data(df)
+    X_train, X_test, y_train, y_test, feature_names = preprocess_data(df)
 
     # Entrenar el modelo
-    model = train_model(X_train, y_train)
+    model = train_model(X_train, y_train, feature_names)
 
     # Evaluar el modelo
     evaluate_model(model, X_test, y_test)
 
     # Visualizar importancias de las características
-    plot_feature_importances(model, df.columns[:-1])
+    output_path = 'feature_importances.png'
+    plot_feature_importances(model, feature_names, output_path)
+
+    # Mostrar la gráfica
+    img = plt.imread(output_path)
+    plt.imshow(img)
+    plt.axis('off')
+    plt.show()
 
     # Preparar los datos del usuario
-    sample = pd.DataFrame([user_data], columns=df.columns[:-1])
+    sample = pd.DataFrame([user_data], columns=feature_names)
 
     # Calcular probabilidad
     probability = calculate_probability(model, sample)
 
     # Mostrar resultados
     result_msg = (
-        f"La probabilidad de estar en la friend zone según los datos ingresados es: {
-            probability:.2%}"
+        f"La probabilidad de estar en la friend zone según los datos ingresados es: {probability:.2%}"
     )
     messagebox.showinfo("Resultado del Análisis", result_msg)
 
 
 def main():
     root = tk.Tk()
-    root.title("Análisis Predictivo: Friend Zone")
+    root.title("🔍 Análisis Predictivo: Friend Zone")
 
     frame = tk.Frame(root, padx=20, pady=20)
     frame.pack(padx=10, pady=10)
