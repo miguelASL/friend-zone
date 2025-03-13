@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def plot_feature_importances(model, features, output_path='feature_importances.png'):
     importances = model.feature_importances_
-    colors = plt.cm.plasma(importances)
+    colors = plt.cm.viridis(importances)
 
     plt.figure(figsize=(12, 8))
     bars = plt.barh(features, importances, color=colors, edgecolor='black')
@@ -24,6 +24,7 @@ def plot_feature_importances(model, features, output_path='feature_importances.p
                  ha='center')
 
     plt.gca().invert_yaxis()
+    plt.grid(True, linestyle='--', alpha=0.6)
     plt.tight_layout()
     plt.savefig(output_path)
     plt.close()
