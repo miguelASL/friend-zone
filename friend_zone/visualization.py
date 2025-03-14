@@ -24,7 +24,7 @@ def plot_feature_importances(model, features, output_path='feature_importances.p
                  ha='center')
 
     plt.gca().invert_yaxis()
-    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.grid(True, linestyle='--', alpha=0.6, axis='x')
     plt.tight_layout()
     plt.savefig(output_path)
     plt.close()

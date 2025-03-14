@@ -111,7 +111,7 @@ def main():
     title_label.pack(pady=10)
 
     subtitle_label = ttk.Label(
-        frame, text="Ingrese los datos para realizar el análisis", font=("Helvetica", 12))
+        frame, text="Ingrese los datos de esta semana para realizar el análisis", font=("Helvetica", 12))
     subtitle_label.pack(pady=5)
 
     # Crear entradas para cada característica
